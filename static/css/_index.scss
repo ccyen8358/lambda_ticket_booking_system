@@ -1,0 +1,79 @@
+@import "color.scss";
+
+
+
+.blue-header {
+    h2 {
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        position: relative;
+        color: $blue;
+        background: url(../images/index-line.png) no-repeat bottom center;
+        small {
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+            display: inline-block;
+            font-size: 50%;
+
+            a {
+                color: $gray;
+            }
+            a:hover, a:focus{
+                color: $blue;
+            }
+        }
+    }
+}
+
+
+/**********KV&AD**********/
+
+.carousel-caption {
+    margin-bottom: 15%;
+}
+
+.carousel-inner {
+    .item {
+        max-height: 500px;
+        overflow: hidden;
+        text-align: center;
+        img {
+            display: inline-block;
+        }
+    }
+}
+
+.carousel-indicators-bottom {
+    bottom: -40px;
+
+    li {
+        background: $blue-light;
+        border: 1px solid $blue-light;        
+    }
+
+    .active {
+        background: $blue;
+        border: 1px solid  $blue;
+    }
+}
+/**********KV&AD**********/
+
+.page-header {
+    margin: 5px 0 15px ;
+}
+
+.panel {
+    h3 {
+        margin-top:15px;
+        margin-bottom: 0px;  
+    }
+}
+
+
+
+
+
+
+
+

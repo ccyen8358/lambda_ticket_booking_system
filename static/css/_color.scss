@@ -1,0 +1,27 @@
+$white-color: #ffffff;
+$gray-dark: #333;
+$gray: #555;
+$gray-light: #888; 
+$gray-lighter: #ddd;
+
+$blue: #0f85c3;
+$blue-light: #6ddae1;
+$red: #f35742;
+$red-dark: #f34242;
+
+
+@mixin font-15() {
+    font-size: 1.071em;
+}
+@mixin font-18() {
+    font-size: 1.286em;
+}
+@mixin line-height-24() {
+    line-height: 1.714em;
+}
+@mixin hover-anime() {
+    transition:all .3s;
+    -moz-transition:all .3s; /* Firefox 4 */
+    -webkit-transition:all .3s; /* Safari & Chrome */
+    -o-transition:all .3s; /* Opera */
+}

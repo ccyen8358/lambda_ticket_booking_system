@@ -1,0 +1,10 @@
+#!/bin/bash
+yum update
+yum install -y python36
+pip install boto3
+pip install flask
+mkdir flask
+cd flask
+wget https://s3-ap-southeast-1.amazonaws.com/my-user-packages/MyFlask.zip
+unzip MyFlask.zip
+python MyFlask.py

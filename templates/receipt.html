@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>購票網</title>
+    <link href="{{ url_for('static',filename='includes/bootstrap/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static',filename='css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='includes/font-awesome/css/font-awesome.min.css') }} " rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/layout.css') }} " rel="stylesheet" type="text/css">
+    <script src="{{ url_for('static',filename='includes/jscripts/jquery-1.12.4.min.js') }} "></script>
+    <script src="{{ url_for('static',filename='includes/bootstrap/js/bootstrap.js') }} "></script>
+    <script src="{{ url_for('static',filename='includes/jscripts/ie10-viewport-bug-workaround.js') }}"></script>
+
+    <!-- HTML5 shim and Respond.js 讓 IE8 支援 HTML5 元素與媒體查詢 -->
+    <!--[if lt IE 9]>
+      <script src="includes/jscripts/html5shiv.min.js"></script>
+      <script src="includes/jscripts/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+
+
+<!--NAV-->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url_for('home') }}">購票網</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<!--NAV-->
+
+
+<!-- Modal -->
+<div >
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">購票成功</h4>
+			</div>
+			<!-- 這邊使用Jinja2語法來讀取後端傳來的收據資料物件item -->
+			<div class="modal-body text-center">
+				<p class="t-blue"><i class="fa fa-check fa-5x" aria-hidden="true"></i></p>
+				<br/>
+				<p class="lead t-blue">{{ item['mr_mrs'] }} {{ item['customer_name'] }}，感謝您的購買！</p>
+				<p>
+					<table>
+						<tr>
+							<td style="text-align: left;">
+								演唱會名稱:
+							</td>
+							<td style="text-align: left; padding-left: 20px;">
+								{{ item['event_name'] }}
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: left;">
+								購買項目:
+							</td>
+							<td style="text-align: left; padding-left: 20px;">								
+								{% for ticket in item['purchase'] %}
+									{{ ticket['ticket_type'] }} ( NT$ {{ ticket['ticket_price'] }} ) x {{ ticket['ticket_count'] }} <br/>
+								{% endfor %}
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: left;">
+								總計:
+							</td>
+							<td style="text-align: left; padding-left: 20px;">
+								NT$ {{ item['total'] }}
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: left;">
+								訂單序號:
+							</td>
+							<td style="text-align: left; padding-left: 20px;">
+								{{ item['uuid'] }}
+							</td>
+						</tr>
+					</table>
+				</p>
+				<br/>
+				<p>我們將會傳送訂單資訊至您的手機，敬請留意。</p>
+				<br/>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>
