@@ -17,7 +17,7 @@ def lambda_handler(event, context):
 	# S3觸發的事件會存在一個Dictionary裡，這個Dictionary存放在event['Records']的序列中
     for record in event['Records']:
 		# 上傳S3的Bucket Name
-        BUCKET_NAME = record['s3']['bucket']['name']']:
+        BUCKET_NAME = record['s3']['bucket']['name']
 		# 上傳至S3的zip檔名稱
         key = record['s3']['object']['key']
         raw_key = urllib.parse.unquote_plus(key)
@@ -65,6 +65,8 @@ def lambda_handler(event, context):
                     evt['prices'].append({ 'tier' : price.attrib['tier'],  'price' : int(price.text) })
 			# 演唱會圖片
             elif child.tag == 'image':
+				# 這邊會把解壓縮出來的演唱會圖片再次上傳至一個新的S3上
+				# 請記得自己將'webapp-event-pics'修改為你自己的S3 Bucket名稱
                 s3.Bucket('webapp-event-pics').upload_file('/tmp/{0}'.format(child.text), child.text)
                 evt['image'] = child.text
         

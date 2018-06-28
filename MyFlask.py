@@ -7,6 +7,8 @@ from flask import Flask, render_template, request, redirect, url_for
 # we use flask as our web server
 # flask uses route maps to define different actions to do for different urls
 app = Flask(__name__)
+# we used Singapore ('ap-southeast-1') as our DynamoDB region
+# change it accordingly if you aren't using Singapore region
 dynamodb = boto3.resource('dynamodb', 'ap-southeast-1')
 
 app.config['UPLOAD_FOLDER'] = ''

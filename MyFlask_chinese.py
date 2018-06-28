@@ -7,6 +7,7 @@ from flask import Flask, render_template, request, redirect, url_for
 # 我們使用flask來當作web server
 # flask會使用route map來定義不同request url時應做的動作
 app = Flask(__name__)
+# 我們的使用地區是Singapore('ap-southeast-1')，請依情況自行更改
 dynamodb = boto3.resource('dynamodb', 'ap-southeast-1')
 
 app.config['UPLOAD_FOLDER'] = ''
