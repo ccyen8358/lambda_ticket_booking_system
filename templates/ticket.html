@@ -129,7 +129,7 @@
 				data: JSON.stringify(payload),
 				success: function(data) {
 					// 訂票請求若成功，就轉址到訂票收據頁面
-					// 注意我們這裡有使用到Jinja2語法的{{ }}以及flask的url_for函式
+					// 注意我們這裡有使用到Jinja2語法以及flask的url_for函式
 					window.location.href = "{{ url_for('view_receipt',rct_id='') }}" + data;
 			
 			$("#spinner").show();
